@@ -1,0 +1,126 @@
+/* src/Auth.css */
+
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Couleur de fond claire */
+}
+
+.auth-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Largeur de la carte */
+  margin: 50px auto; /* Centrer la carte */
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.auth-tabs button.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.auth-form-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-form-container h2 {
+  color: #333;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.auth-form-container .auth-subtitle {
+  color: #777;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.auth-button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .auth-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+  }
+
+  .auth-card {
+      width: 90%;
+      margin: 20px auto;
+  }
+
+  
+}
+
+@media (max-width: 600px) {
+  .auth-card {
+      width: 95%;
+  }
+
+  .auth-form-container {
+      padding: 20px;
+  }
+
+  .auth-tabs button {
+      font-size: 14px;
+      padding: 10px;
+  }
+}
