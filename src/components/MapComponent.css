@@ -1,0 +1,10 @@
+/* src/components/MapComponent.css */
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* If you are using Leaflet, you might need to include its CSS: */
+/* @import 'leaflet/dist/leaflet.css'; */
+
+/* Add any specific styling for your map component here */
