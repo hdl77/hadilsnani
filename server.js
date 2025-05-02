@@ -10,6 +10,7 @@ dotenv.config();
 import User from "./models/user.js";
 import Customer from "./models/customer.js";
 import Driver from "./models/driver.js"; // Import the Driver model
+import Product from "./models/product.js";
 // Importez le modèle Customer
 import connectDB from "./configs/db.js";
 
@@ -24,6 +25,7 @@ connectDB();
 
 // Route d'inscription pour les utilisateurs
 app.post("/api/users/signup", async (req, res) => {
+  console.log("Requête Signup reçue avec le corps :", req.body); // Ajout du log
   try {
     const { username, email, password } = req.body;
 
@@ -73,8 +75,8 @@ app.get("/api/users", async (req, res) => {
 // Nouvelle route pour récupérer tous les clients (pour afficher le tableau des clients)
 app.get("/api/customers", async (req, res) => {
   try {
-    const customers = await Customer.find(); // Récupère tous les documents de la collection 'customer'
-    return res.status(200).json(customers); // Envoie les clients au format JSON
+    const customers = await Customer.find();
+    return res.status(200).json(customers);
   } catch (error) {
     console.error("Error fetching customers:", error);
     return res
@@ -84,23 +86,23 @@ app.get("/api/customers", async (req, res) => {
 });
 
 app.post("/api/users/login", async (req, res) => {
+  console.log("Requête Login reçue avec le corps :", req.body);
   try {
     const { email, password } = req.body;
 
     // 1. Rechercher l'utilisateur par email
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" }); // Utilisateur non trouvé
+      return res.status(401).json({ message: "Email incorrect" }); // Message plus précis
     }
 
     // 2. Comparer le mot de passe avec le mot de passe haché
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid credentials" }); // Mot de passe incorrect
+      return res.status(401).json({ message: "Mot de passe incorrect" }); // Message spécifique pour mot de passe faux
     }
 
-    // 3. Si les informations d'identification sont valides, vous pouvez générer un token (JWT par exemple) pour l'authentification.
-    //    Pour l'instant, pour simplifier, nous allons simplement renvoyer un message de succès.
+    // 3. Si les informations d'identification sont valides
     return res.status(200).json({ message: "Login successful" });
   } catch (error) {
     console.error("Login error:", error);
@@ -109,7 +111,6 @@ app.post("/api/users/login", async (req, res) => {
       .json({ message: "Something went wrong during login", error: error });
   }
 });
-
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}/`);
 });
