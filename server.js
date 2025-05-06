@@ -11,6 +11,13 @@ import User from "./models/user.js";
 import Customer from "./models/customer.js";
 import Driver from "./models/driver.js"; // Import the Driver model
 import Product from "./models/product.js";
+import Order from "./models/Order.js";
+import Delivery from "./models/delivery.js";
+import Round from "./models/Round.js";
+import Departure from "./models/departure.js";
+import OrderDetail from "./models/orderDetail.js";
+import Vehicle from "./models/vehicle.js";
+
 // Importez le modèle Customer
 import connectDB from "./configs/db.js";
 
