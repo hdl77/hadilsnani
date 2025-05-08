@@ -9,7 +9,6 @@ const orderDetailSchema = new mongoose.Schema({
   fk_order_id: { type: Number, ref: "Order", required: true },
   fk_product_id: { type: Number, ref: "Product", required: true },
   quantity: { type: Number },
-  sub_total: { type: Number },
 });
 
 const OrderDetail = mongoose.model("OrderDetail", orderDetailSchema);

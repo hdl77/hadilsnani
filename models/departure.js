@@ -7,7 +7,8 @@ const departureSchema = new mongoose.Schema({
     required: true,
   },
   departure_time: { type: String },
-  departure_coordinates: { type: String },
+  departure_coordinates: { type: [Number], required: true },
+
   fk_delivery_id: { type: Number, ref: "Delivery", required: true },
 });
 

@@ -7,11 +7,7 @@ const customerSchema = new mongoose.Schema({
     required: true,
     enum: ["point de vente", "laiterie"],
   },
-  coordinates_x: {
-    type: [Number],
-    required: true,
-  },
-  coordinates_y: {
+  coordinates: {
     type: [Number],
     required: true,
   },

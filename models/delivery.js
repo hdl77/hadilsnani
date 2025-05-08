@@ -1,14 +1,29 @@
 import mongoose from "mongoose";
+
 const deliverySchema = new mongoose.Schema({
-  delivery_id: { type: Number, primaryKey: true, unique: true, required: true },
-  new_address: { type: String },
-  departure_time: { type: String },
-  arrival_time: { type: String },
-  status: { type: String },
-  fk_round_id: { type: Number, ref: "Round" },
-  fk_order_id: { type: Number, ref: "Order", required: true },
-  delivery_cost: { type: Number },
+  departureWilaya: { type: String, required: true },
+  departureDate: { type: String },
+  numVehicles: { type: Number },
+  numDrivers: { type: Number },
+  clients: [
+    {
+      customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Customer", // Important: Match the model name exactly (case-sensitive)
+        required: true,
+      },
+      // Add any other client-specific delivery info here if needed
+    },
+  ],
+  products: [
+    {
+      type: { type: String },
+      quantity: { type: Number },
+    },
+  ],
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Delivery = mongoose.model("Delivery", deliverySchema);
+
 export default Delivery;
